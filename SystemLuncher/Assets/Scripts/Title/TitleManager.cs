@@ -35,20 +35,22 @@ public class TitleManager : MonoBehaviour
             UserDataManager.Instance.SaveUserData(); // 기본 데이터 저장
         }
 
+        /*
+        var confirmUIData = new ConfirmUIData();
+        confirmUIData.ConfirmType = ConfirmType.OK;
+        confirmUIData.TitleTxt = "UI Test";
+        confirmUIData.DescTxt = "This is UI Text.";
+        confirmUIData.OKBtnTxt = "OK";
+        confirmUIData.CancelBtnTxt = "Cancel";
+        UIManager.Instance.OpenUI<ConfirmUI>(confirmUIData);
+        */
+
         StartCoroutine(LoadGameCo());
     }
 
     private IEnumerator LoadGameCo()
     {
         Logger.Log($"{GetType()}::LoadGameCo");
-
-        AudioManager.Instance.PlayBGM(BGM.lobby);
-        yield return new WaitForSeconds(5f);
-        AudioManager.Instance.PauseBGM();
-        yield return new WaitForSeconds(5f);
-        AudioManager.Instance.ResumeBGM();
-        yield return new WaitForSeconds(5f);
-        AudioManager.Instance.StopBGM();
 
         LogoAnim.Play();
         yield return new WaitForSeconds(LogoAnim.clip.length);
